@@ -1,0 +1,68 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-8 col-lg-offset-3 col-lg-6">
+    	 <div class="well profile">
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-8">
+                    <h2><%= @user.name %></h2>
+                    <p><strong><%= @user.login %></strong></p>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <figure>
+                      <%= @user.image %>
+                        <figcaption class="ratings">
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            </p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-xs-12 divider text-center">
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong><%= @user.followers %></strong></h2>
+                    <p><small>Followers</small></p>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong><%= @starred_repos %></strong></h2>
+                    <p><small>Starred Repos</small></p>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong><%= @user.following %></strong></h2>
+                    <p><small>Following</small></p>
+                </div>
+            </div>
+            <hr>
+            <h4><strong>Repositories</strong></h4>
+
+            <ul>
+              <% @repos.each do |repo| %>
+                <li class="arrow"><%= repo.name %></li>
+              <% end %>
+            </ul>
+
+            <h4><strong>Recent Activity</strong></h4>
+
+            <table class="table table-striped table-bordered">
+              <% @user_activity.each do |activity| %>
+                <tr>
+                  <td><%= activity.commit_message %></td>
+                </tr>
+              <% end %>
+            </table>
+
+            <h4><strong>Followings Activity</strong></h4>
+
+            <table class='table table-striped table-bordered'>
+              <% @followings_activity.each do |activity| %>
+                  <tr>
+                    <td><%= activity.actor.login %></td>
+                    <td><%= activity.commit_message %></td>
+                  </tr>
+              <% end %>
+            </table>
+    	 </div>
+		</div>
+	</div>
+</div>
